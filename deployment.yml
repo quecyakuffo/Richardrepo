@@ -19,10 +19,12 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
-        volumeMounts:
-        - mountPath: /var/www/html
-          name: local-storage 
-      volumes:
-        - name: local-storage
-          persistentVolumeClaim:
-            claimName: local-pvc  
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits: 
+            cpu: 200m
+            memory: 256Mi
+
+
